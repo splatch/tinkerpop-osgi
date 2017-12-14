@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.apache.tinkerpop</groupId>
+        <artifactId>tinkerpop</artifactId>
+        <version>3.2.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.code-house.tinkerpop</groupId>
+    <artifactId>tinkerpop-osgi</artifactId>
+    <version>3.2.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <tinkerpop.version>${project.parent.version}</tinkerpop.version>
+        <neo4j.version>3.0.1</neo4j.version>
+        <neo4j-module.version>${neo4j.version}-SNAPSHOT</neo4j-module.version>
+        <neo4j-tinkerpop-api.version>0.1</neo4j-tinkerpop-api.version>
+        <neo4j-tinkerpop-api-module.version>${neo4j-tinkerpop-api.version}-SNAPSHOT</neo4j-tinkerpop-api-module.version>
+        <neo4j-tinkerpop-api-impl.version>0.4-3.0.1</neo4j-tinkerpop-api-impl.version>
+        <neo4j-tinkerpop-api-impl-module.version>${neo4j-tinkerpop-api-impl.version}-SNAPSHOT</neo4j-tinkerpop-api-impl-module.version>
+
+        <fasterxml-jackson.version>2.5.3</fasterxml-jackson.version>
+
+        <junit.version>4.12</junit.version>
+
+        <karaf.version>3.0.6</karaf.version>
+        <pax-exam.version>4.5.0</pax-exam.version>
+        <pax-web.version>3.2.6</pax-web.version>
+        <osgi.version>4.3.1</osgi.version>
+
+        <maven-bundle-plugin.version>2.5.4</maven-bundle-plugin.version>
+
+        <osgi.activator></osgi.activator>
+        <osgi.import>*</osgi.import>
+        <osgi.export></osgi.export>
+        <osgi.private></osgi.private>
+        <osgi.embed></osgi.embed>
+    </properties>
+
+    <modules>
+        <module>gremlin-shaded</module>
+        <module>gremlin-core</module>
+        <module>tinkergraph-gremlin</module>
+        <module>examples</module>
+        <module>neo4j-gremlin</module>
+        <module>gremlin-groovy</module>
+        <module>gremlin-core-graphml</module>
+        <module>gremlin-core-graphson</module>
+        <module>gremlin-core-gryo</module>
+        <module>gremlin-console</module>
+        <module>gremlin-driver</module>
+        <module>karaf-console</module>
+        <module>neo4j-tinkerpop-api</module>
+        <module>neo4j-tinkerpop-api-impl</module>
+        <module>neo4j</module>
+        <module>features</module>
+        <module>itests</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Project artifacts -->
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>gremlin-console</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>gremlin-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>gremlin-core-graphml</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>gremlin-core-graphson</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>gremlin-core-gryo</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>gremlin-driver</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>gremlin-groovy</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>gremlin-shaded</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>neo4j</artifactId>
+                <version>${neo4j.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>neo4j-gremlin</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>neo4j-tinkerpop-api</artifactId>
+                <version>${neo4j-tinkerpop-api.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>neo4j-tinkerpop-api-impl</artifactId>
+                <version>${neo4j-tinkerpop-api-impl.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>tinkergraph-gremlin</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>features</artifactId>
+                <version>${project.version}</version>
+                <classifier>features</classifier>
+                <type>xml</type>
+            </dependency>
+            <dependency>
+                <groupId>org.code-house.tinkerpop</groupId>
+                <artifactId>itests</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Tinkerpop artifacts -->
+            <dependency>
+                <groupId>org.apache.tinkerpop</groupId>
+                <artifactId>gremlin-core</artifactId>
+                <version>${tinkerpop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tinkerpop</groupId>
+                <artifactId>gremlin-console</artifactId>
+                <version>${tinkerpop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tinkerpop</groupId>
+                <artifactId>gremlin-driver</artifactId>
+                <version>${tinkerpop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tinkerpop</groupId>
+                <artifactId>gremlin-shaded</artifactId>
+                <version>${tinkerpop.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.tinkerpop</groupId>
+                <artifactId>gremlin-groovy</artifactId>
+                <version>${tinkerpop.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.tinkerpop</groupId>
+                <artifactId>tinkergraph-gremlin</artifactId>
+                <version>${tinkerpop.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.tinkerpop</groupId>
+                <artifactId>neo4j-gremlin</artifactId>
+                <version>${tinkerpop.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-tinkerpop-api</artifactId>
+                <version>${neo4j-tinkerpop-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-tinkerpop-api-impl</artifactId>
+                <version>${neo4j-tinkerpop-api-impl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-kernel</artifactId>
+                <version>${neo4j.version}</version>
+            </dependency>
+
+            <!-- Karaf related dependencies -->
+            <dependency>
+                <groupId>org.apache.karaf.shell</groupId>
+                <artifactId>org.apache.karaf.shell.console</artifactId>
+                <version>${karaf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.karaf</groupId>
+                <artifactId>apache-karaf</artifactId>
+                <version>${karaf.version}</version>
+                <type>zip</type>
+            </dependency>
+
+            <!-- OSGi spec jars -->
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <version>${osgi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.compendium</artifactId>
+                <version>${osgi.version}</version>
+            </dependency>
+
+            <!-- Test dependencies -->
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>1</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam-container-karaf</artifactId>
+                <version>${pax-exam.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam-features</artifactId>
+                <version>${pax-exam.version}</version>
+                <type>xml</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam-junit4</artifactId>
+                <version>${pax-exam.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>${maven-bundle-plugin.version}</version>
+                    <configuration>
+                        <instructions>
+                            <Import-Package>${osgi.import}</Import-Package>
+                            <Export-Package>${osgi.export}</Export-Package>
+                            <Private-Package>${osgi.private}</Private-Package>
+                            <Bundle-Activator>${osgi.activator}</Bundle-Activator>
+                            <Embed-Dependency>${osgi.embed}</Embed-Dependency>
+                        </instructions>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.karaf.tooling</groupId>
+                    <artifactId>karaf-maven-plugin</artifactId>
+                    <version>${karaf.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.servicemix.tooling</groupId>
+                    <artifactId>depends-maven-plugin</artifactId>
+                    <version>1.3.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

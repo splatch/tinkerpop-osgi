@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.code-house.tinkerpop</groupId>
+        <artifactId>tinkerpop-osgi</artifactId>
+        <version>3.2.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>tinkergraph-gremlin</artifactId>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <osgi.private>org.apache.tinkerpop.gremlin.groovy.plugin.*</osgi.private>
+        <osgi.import>
+            *
+        </osgi.import>
+        <osgi.export>
+            !org.apache.tinkerpop.gremlin.groovy.plugin,
+            org.apache.tinkerpop.gremlin.tinkergraph.*
+        </osgi.export>
+        <osgi.embed>*;artifactId=tinkergraph-gremlin;inline=true</osgi.embed>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.tinkerpop</groupId>
+            <artifactId>tinkergraph-gremlin</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

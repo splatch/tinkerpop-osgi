@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.code-house.tinkerpop</groupId>
+        <artifactId>tinkerpop-osgi</artifactId>
+        <version>3.2.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>gremlin-console</artifactId>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <osgi.import>
+            groovyx.gbench.*;resolution:=optional,
+            groovyx.gprof.*;resolution:=optional,
+            *
+        </osgi.import>
+        <osgi.export>org.apache.tinkerpop.gremlin.console.*</osgi.export>
+        <osgi.private>org.apache.tinkerpop.gremlin.console.groovy.plugin.*</osgi.private>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.tinkerpop</groupId>
+            <artifactId>gremlin-console</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

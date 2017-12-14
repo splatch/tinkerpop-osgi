@@ -1,0 +1,79 @@
+<features name="tinkerpop-${project.version}"
+    xmlns="http://karaf.apache.org/xmlns/features/v1.2.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://karaf.apache.org/xmlns/features/v1.2.1
+        http://karaf.apache.org/xmlns/features/v1.2.1
+    ">
+
+    <feature name="javatuples" version="${java.tuples.version}">
+        <bundle>wrap:mvn:org.javatuples/javatuples/${java.tuples.version}$Bundle-SymbolicName=org.javatuples&amp;Bundle-Version=${java.tuples.version}&amp;Export-Package=org.javatuples.*;version=${java.tuples.version}</bundle>
+    </feature>
+
+    <feature name="jackson" version="${fasterxml-jackson.version}">
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${fasterxml-jackson.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-core/${fasterxml-jackson.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-databind/${fasterxml-jackson.version}</bundle>
+    </feature>
+
+    <feature name="gremlin-shaded" version="${project.version}">
+        <bundle>mvn:org.code-house.tinkerpop/gremlin-shaded/${project.version}</bundle>
+    </feature>
+
+    <feature name="gremlin-core" version="${project.version}">
+        <feature version="${project.version}">gremlin-shaded</feature>
+        <feature version="${fasterxml-jackson.version}">jackson</feature>
+        <feature version="${java.tuples.version}">javatuples</feature>
+
+        <bundle>mvn:commons-lang/commons-lang/2.6</bundle>
+        <bundle>mvn:commons-configuration/commons-configuration/1.10 </bundle>
+
+        <bundle>wrap:mvn:com.jcabi/jcabi-manifests/1.1</bundle>
+        <bundle>mvn:org.yaml/snakeyaml/1.16</bundle>
+
+        <bundle>mvn:org.code-house.tinkerpop/gremlin-core/${project.version}</bundle>
+    </feature>
+
+    <feature name="gremlin-core-graphml" version="${project.version}">
+        <feature version="${project.version}">gremlin-core</feature>
+
+        <bundle>mvn:org.code-house.tinkerpop/gremlin-core-graphml/${project.version}</bundle>
+    </feature>
+
+    <feature name="gremlin-core-graphson" version="${project.version}">
+        <feature version="${project.version}">gremlin-core</feature>
+
+        <bundle>mvn:org.code-house.tinkerpop/gremlin-core-graphson/${project.version}</bundle>
+    </feature>
+
+    <feature name="gremlin-core-gryo" version="${project.version}">
+        <feature version="${project.version}">gremlin-core</feature>
+
+        <bundle>mvn:org.code-house.tinkerpop/gremlin-core-gryo/${project.version}</bundle>
+    </feature>
+
+    <feature name="gremlin-groovy" version="${project.version}">
+        <feature version="${project.version}">gremlin-core</feature>
+
+        <feature version="${project.version}">gremlin-core-graphml</feature>
+        <feature version="${project.version}">gremlin-core-graphson</feature>
+        <feature version="${project.version}">gremlin-core-gryo</feature>
+
+        <bundle>mvn:org.codehaus.groovy/groovy-all/2.4.1/jar/indy</bundle>
+        <bundle>wrap:mvn:org.kohsuke/groovy-sandbox/1.6</bundle>
+        <bundle>wrap:mvn:org.codehaus.groovy.modules.http-builder/http-builder/0.7</bundle>
+        <bundle>wrap:mvn:com.github.jeremyh/jBCrypt/jbcrypt-0.4</bundle>
+
+        <bundle>mvn:org.code-house.tinkerpop/gremlin-groovy/${project.version}</bundle>
+    </feature>
+
+    <feature name="tinkergraph-gremlin" version="${project.version}">
+        <feature version="${project.version}">gremlin-core</feature>
+        <feature version="${project.version}">gremlin-groovy</feature>
+
+        <bundle>mvn:org.apache.commons/commons-lang3/3.3.2</bundle>
+
+        <bundle>mvn:org.code-house.tinkerpop/tinkergraph-gremlin/${project.version}</bundle>
+    </feature>
+
+</features>

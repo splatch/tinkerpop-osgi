@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.code-house.tinkerpop</groupId>
+        <artifactId>tinkerpop-osgi</artifactId>
+        <version>3.2.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>neo4j-tinkerpop-api-impl</artifactId>
+    <packaging>bundle</packaging>
+    <version>${neo4j-tinkerpop-api-impl-module.version}</version>
+
+    <properties>
+        <osgi.export>org.neo4j.tinkerpop.api.impl.*</osgi.export>
+        <osgi.embed>*;artifactId=neo4j-tinkerpop-api-impl;inline=true</osgi.embed>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-tinkerpop-api-impl</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
